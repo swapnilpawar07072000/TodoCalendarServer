@@ -39,7 +39,7 @@ app.get("/api/getJSONFile", async(req, res) => {
 app.post('/api/updateJSONFile', async(req, res) => {
     var reqData = req.body;
     const file_location = '/tmp/files/eventsList.json';
-    createJSONFile(file_location, reqData);
+    //createJSONFile(file_location, reqData);
     await writeFileJSON(file_location, reqData);
     const data = await readFileJSON(file_location);
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -51,7 +51,7 @@ app.delete('/api/delete', async(req, res) => {
     var eventID = reqData.event_id;
     delete eventData.data[eventID];
     const file_location = '/tmp/files/eventsList.json';;
-    createJSONFile(file_location, eventData);
+    //createJSONFile(file_location, eventData);
     await writeFileJSON(file_location, eventData);
     const data = await readFileJSON(file_location);
     res.setHeader('Access-Control-Allow-Origin', '*');
