@@ -38,7 +38,7 @@ app.get("/api/getJSONFile", async(req, res) => {
 
 app.post('/api/updateJSONFile', async(req, res) => {
     var reqData = req.body;
-    const file_location = '/files/eventsList.json';
+    const file_location = '/tmp/files/eventsList.json';
     createJSONFile(file_location, reqData);
     await writeFileJSON(file_location, reqData);
     const data = await readFileJSON(file_location);
@@ -50,7 +50,7 @@ app.delete('/api/delete', async(req, res) => {
     var eventData = JSON.parse(reqData.event_data);
     var eventID = reqData.event_id;
     delete eventData.data[eventID];
-    const file_location = '/files/eventsList.json';;
+    const file_location = '/tmp/files/eventsList.json';;
     createJSONFile(file_location, eventData);
     await writeFileJSON(file_location, eventData);
     const data = await readFileJSON(file_location);
