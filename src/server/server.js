@@ -43,7 +43,8 @@ app.post('/api/updateJSONFile', async(req, res) => {
     await writeFileJSON(file_location, reqData);
     const data = await readFileJSON(file_location);
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.send({msg: data});
+    // console.log(data);
+    res.send(data);
 });
 app.delete('/api/delete', async(req, res) => {
     var reqData = req.body;
